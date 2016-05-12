@@ -47,7 +47,7 @@ namespace MvcMovie.Controllers
         // POST: Movies/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult Create(Movie movie)
+        public IActionResult Create([Bind("ID,Title,ReleaseDate,Genre,Price")] Movie movie)
         {
             if (ModelState.IsValid)
             {
@@ -77,7 +77,7 @@ namespace MvcMovie.Controllers
         // POST: Movies/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult Edit(Movie movie)
+        public IActionResult Edit([Bind("ID,Title,ReleaseDate,Genre,Price")] Movie movie)
         {
             if (ModelState.IsValid)
             {
@@ -109,7 +109,7 @@ namespace MvcMovie.Controllers
         // POST: Movies/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        public IActionResult DeleteConfirmed(int id)
+        public IActionResult DeleteConfirmed([Bind("ID,Title,ReleaseDate,Genre,Price")] int id)
         {
             Movie movie = _context.Movie.Single(m => m.ID == id);
             _context.Movie.Remove(movie);
